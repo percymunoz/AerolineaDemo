@@ -1,0 +1,34 @@
+﻿@model Aerolinea.Models.Entidades.Reserva
+@{
+    ViewData["Title"] = "Paso4";
+}
+
+<div class="container my-5">
+    <div class="card p-4">
+        <div class="card-body d-flex w-100 justify-content-center align-items-center">
+
+            <div class="text-center">
+                <div>
+                    <h2 class="green-text font-weight-light">Reserva Exitosa</h2>
+                </div>
+                <div><strong>Nro de Reserva</strong></div>
+                <div class="fa-3x deep-purple-text">@Model.ReservaId</div>
+                <div><strong>Pasajero</strong></div>
+                <div class="fa-3x deep-purple-text">@ViewBag.Pasajero</div>
+                <div><strong>Fecha de Ida</strong></div>
+                <div class="fa-3x deep-purple-text">@string.Format("{0:dd/MM/yyyy}", Model.FechaIda)</div>
+                <div><strong>Fecha de Vuelta</strong></div>
+                <div class="fa-3x deep-purple-text">@string.Format("{0:dd/MM/yyyy}", Model.FechaVuelta)</div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="container my-5">
+    <div class="d-flex w-100 justify-content-center align-items-center">
+        <div>
+            <a asp-controller="Home" asp-action="Index"  class="btn btn-primary btn-lg ">Aceptar</a>
+        </div>
+    </div>
+</div>

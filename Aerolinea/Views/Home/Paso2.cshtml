@@ -1,0 +1,140 @@
+﻿@using Aerolinea.Util
+@model Paso2
+@{
+    ViewData["Title"] = "Paso2";
+}
+
+<form method="post">
+    <div class="container my-5">
+        <div class="card p-4">
+            <div class="card-body">
+                <h2 class="font-weight-light deep-purple-text">
+                    Selecionar Vuelo de Ida
+                </h2>
+                <div class="p-2">
+                    <input type="hidden" asp-for="FechaIda" id="fechaIda" />
+                    <input type="hidden" asp-for="FechaRetorno" id="fechaRetorno" />
+                    <i class="far fa-calendar deep-purple-text"></i> @Model.FechaIda.ToLongDateString()
+
+                </div>
+                <div class="list-group">
+                    @foreach (Vuelo vuelo in Model.VuelosIda)
+                    {
+        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <div class="vuelo">
+                    <div class="ruta-vuelo">
+                        <div class="ruta-ciudad">
+                            <div class="vuelo-hora">
+                                @vuelo.HoraSalida
+                            </div>
+                            <div class="vuelo-cod-iata">
+                                @vuelo.OrigenIATA
+                            </div>
+                            <div class="vuelo-ciudad">
+                                @vuelo.OrigenCiudad
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center grey-text">
+                            <span>
+                                <i class="fa fa-2x fa-plane"></i>
+                            </span>
+                        </div>
+                        <div class="ruta-ciudad">
+                            <div class="vuelo-hora">
+                                @vuelo.HoraLlegada
+                            </div>
+                            <div class="vuelo-cod-iata">
+                                @vuelo.DestinoIATA
+                            </div>
+                            <div class="vuelo-ciudad">
+                                @vuelo.DestinoCiudad
+                            </div>
+                        </div>
+                    </div>
+                    <div class="precio-select">
+                        <span><small>US$</small> @vuelo.Precio</span>
+                    </div>
+                    <div class="radio align-self-center">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="@vuelo.VueloId" value="@vuelo.VueloId" name="IDVueloIda">
+                            <label class="custom-control-label" for="@vuelo.VueloId">Seleccionar</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5">
+        <div class="card p-4">
+            <div class="card-body">
+                <h2 class="font-weight-light deep-purple-text">
+                    Seleccionar Vuelo de Retorno
+                </h2>
+                <div class="p-2">
+                    <i class="far fa-calendar deep-purple-text"></i> @Model.FechaRetorno.ToLongDateString()
+                </div>
+                <div class="list-group">
+                    @foreach (Vuelo vuelo in Model.VuelosRetorno)
+                    {
+        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <div class="vuelo d-flex justify-content-between">
+                    <div class="ruta-vuelo">
+                        <div class="ruta-ciudad">
+                            <div class="vuelo-hora">
+                                @vuelo.HoraSalida
+                            </div>
+                            <div class="vuelo-cod-iata">
+                                @vuelo.OrigenIATA
+                            </div>
+                            <div class="vuelo-ciudad">
+                                @vuelo.OrigenCiudad
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center grey-text">
+                            <span>
+                                <i class="fa fa-2x fa-plane"></i>
+                            </span>
+                        </div>
+                        <div class="ruta-ciudad">
+                            <div class="vuelo-hora">
+                                @vuelo.HoraLlegada
+                            </div>
+                            <div class="vuelo-cod-iata">
+                                @vuelo.DestinoIATA
+                            </div>
+                            <div class="vuelo-ciudad">
+                                @vuelo.DestinoCiudad
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="precio-select">
+                        <span><small>US$</small> @vuelo.Precio</span>
+                    </div>
+                    <div class="radio align-self-center">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="@vuelo.VueloId" value="@vuelo.VueloId" name="IDVueloRetorno">
+                            <label class="custom-control-label" for="@vuelo.VueloId">Seleccionar</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5">
+        <div class="d-flex w-100 justify-content-end align-items-center">
+            <div>
+                <button type="submit" asp-action="Paso3" formmethod="post" class="btn btn-primary btn-lg ">Continuar</button>
+            </div>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,84 @@
+﻿@model Paso3 
+@{
+    ViewData["Title"] = "Paso3";
+}
+
+<form method="post">
+    <div class="d-none">
+        <input type="hidden" asp-for="FechaIda" id="fechaIda" />
+        <input type="hidden" asp-for="FechaRetorno" id="fechaRetorno" />
+        <input type="hidden" asp-for="IDVueloIda" id="IDVueloIda" />
+        <input type="hidden" asp-for="IDVueloRetorno" id="IDVueloRetorno" />
+    </div>
+    <div class="container my-5">
+        <div class="card p-4">
+            <div class="card-body">
+                <h2 class="font-weight-light deep-purple-text">
+                    Datos del Pasajero
+                </h2>
+                <div class="form-row">
+                    <!-- Grid column -->
+                    <div class="col-md-6">
+                        <!-- Material input -->
+                        <div class="md-form form-group">
+                            <label for="Nombre">Nombre</label>
+                            <input asp-for="Nombre" type="text" class="form-control" />
+
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-6">
+                        <!-- Material input -->
+                        <div class="md-form form-group">
+                            <label for="Apellido">Apellido</label>
+                            <input asp-for="Apellido" type="text" class="form-control">
+
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <div class="form-row">
+                    <!-- Grid column -->
+                    <div class="col-md-6">
+                        <!-- Material input -->
+                        <div class="md-form form-group">
+                            <label for="Documento">Nro Documento</label>
+                            <input asp-for="DNI" type="text" class="form-control">
+
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-6">
+                        <!-- Material input -->
+                        <div class="md-form form-group">
+                            <label for="Telefono">Nro Telefono</label>
+                            <input asp-for="Telefono" type="text" class="form-control">
+
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <div class="form-row">
+                    <!-- Grid column -->
+                    <div class="col-md-12">
+                        <!-- Material input -->
+                        <div class="md-form form-group">
+                            <label for="Mail">Correo Electrónico</label>
+                            <input asp-for="Correo" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container my-5">
+        <div class="d-flex w-100 justify-content-end align-items-center">
+            <div>
+                <button asp-action="Paso4" formmethod="post" type="submit" class="btn btn-primary btn-lg ">Reservar</button>
+            </div>
+        </div>
+    </div>
+</form>

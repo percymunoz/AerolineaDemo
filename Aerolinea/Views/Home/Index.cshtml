@@ -1,0 +1,67 @@
+﻿@model Paso1
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container my-5">
+    <div class="card p-4">
+        <div class="card-body">
+            <h2 class="font-weight-light deep-purple-text">
+                Búsqueda de Vuelo
+            </h2>
+            <!-- Extended material form grid -->
+            <form method="post">
+                <!-- Grid row -->
+                <div class="form-row">
+                    <!-- Grid column -->
+                    <div class="col-md-6">
+                        <!-- Material input -->
+                        <div class="form-group">
+                            <label asp-for="Origen">Origen</label>
+                            <select class="form-control" asp-for="Origen" asp-items="ViewBag.Origen">
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-6">
+                        <!-- Material input -->
+                        <div class="form-group">
+                            <label asp-for="Destino">Destino</label>
+                            <select class="form-control" asp-for="Destino" asp-items="ViewBag.Destino">
+                            </select>
+
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+                <!-- Grid row -->
+                <div class="form-row">
+                    <!-- Grid column -->
+                    <div class="col-md-6">
+                        <!-- Material input -->
+                        <div class="md-form form-group">
+                            <label asp-for="FechaIda">Fecha ida</label>
+                            <input type="Date" class="form-control" asp-for="FechaIda">
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-6">
+                        <!-- Material input -->
+                        <div class=" form-group">
+                            <label asp-for="FechaRetorno">Fecha ida</label>
+                            <input type="Date" class="form-control" asp-for="FechaRetorno">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-content-between align-content-end">
+                    <button type="submit" asp-action="Paso2"  class="btn btn-primary btn-lg ">Buscar Vuelos</button>
+                </div>
+
+            </form>
+            <!-- Extended material form grid -->
+        </div>
+    </div>
+</div>
