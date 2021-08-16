@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Aerolinea.Migrations
 {
-    public partial class Vuelos : Migration
+    public partial class aerolinea : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,12 +40,13 @@ namespace Aerolinea.Migrations
                 name: "Pasajero",
                 columns: table => new
                 {
-                    PasajeroID = table.Column<int>(type: "int", nullable: false),
+                    PasajeroID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     TipoDoc = table.Column<int>(type: "int", nullable: true),
-                    NroDocumento = table.Column<int>(type: "int", nullable: true),
+                    NroDocumento = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Nombres = table.Column<string>(type: "varchar(70)", unicode: false, maxLength: 70, nullable: true),
                     Apellidos = table.Column<string>(type: "varchar(70)", unicode: false, maxLength: 70, nullable: true),
-                    Telefono = table.Column<int>(type: "int", nullable: true),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "varchar(120)", unicode: false, maxLength: 120, nullable: true)
                 },
                 constraints: table =>
@@ -85,13 +86,16 @@ namespace Aerolinea.Migrations
                 name: "Reserva",
                 columns: table => new
                 {
-                    ReservaID = table.Column<int>(type: "int", nullable: false),
+                    ReservaID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FechaReserva = table.Column<DateTime>(type: "datetime", nullable: true),
                     VueloIda = table.Column<int>(type: "int", nullable: true),
                     VueloRetorno = table.Column<int>(type: "int", nullable: true),
-                    PasajeroID = table.Column<int>(type: "int", nullable: false),
+                    PasajeroID = table.Column<int>(type: "int", nullable: true),
                     ClaseTarifariaID = table.Column<int>(type: "int", nullable: true),
-                    PrecioReservado = table.Column<decimal>(type: "smallmoney", nullable: true)
+                    PrecioReservado = table.Column<decimal>(type: "smallmoney", nullable: true),
+                    FechaIda = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaVuelta = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

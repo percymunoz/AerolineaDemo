@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aerolinea.Migrations
 {
     [DbContext(typeof(ReservaVueloContext))]
-    [Migration("20210813001922_Vuelos")]
-    partial class Vuelos
+    [Migration("20210815234950_aerolinea")]
+    partial class aerolinea
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace Aerolinea.Migrations
 
             modelBuilder.Entity("Aerolinea.Models.Entidades.Aeropuerto", b =>
                 {
-                    b.Property<int>("AeropuertoId")
+                    b.Property<int?>("AeropuertoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("AeropuertoID")
@@ -72,9 +72,11 @@ namespace Aerolinea.Migrations
 
             modelBuilder.Entity("Aerolinea.Models.Entidades.Pasajero", b =>
                 {
-                    b.Property<int>("PasajeroId")
+                    b.Property<int?>("PasajeroId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("PasajeroID");
+                        .HasColumnName("PasajeroID")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Apellidos")
                         .HasMaxLength(70)
@@ -91,11 +93,11 @@ namespace Aerolinea.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(70)");
 
-                    b.Property<int?>("NroDocumento")
-                        .HasColumnType("int");
+                    b.Property<string>("NroDocumento")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Telefono")
-                        .HasColumnType("int");
+                    b.Property<string>("Telefono")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("TipoDoc")
                         .HasColumnType("int");
@@ -107,18 +109,26 @@ namespace Aerolinea.Migrations
 
             modelBuilder.Entity("Aerolinea.Models.Entidades.Reserva", b =>
                 {
-                    b.Property<int>("ReservaId")
+                    b.Property<int?>("ReservaId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("ReservaID");
+                        .HasColumnName("ReservaID")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("ClaseTarifariaId")
                         .HasColumnType("int")
                         .HasColumnName("ClaseTarifariaID");
 
+                    b.Property<DateTime>("FechaIda")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime?>("FechaReserva")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("PasajeroId")
+                    b.Property<DateTime>("FechaVuelta")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("PasajeroId")
                         .HasColumnType("int")
                         .HasColumnName("PasajeroID");
 
@@ -182,8 +192,7 @@ namespace Aerolinea.Migrations
                     b.HasOne("Aerolinea.Models.Entidades.Pasajero", "Pasajero")
                         .WithMany("Reserva")
                         .HasForeignKey("PasajeroId")
-                        .HasConstraintName("FK_Reserva_Pasajero")
-                        .IsRequired();
+                        .HasConstraintName("FK_Reserva_Pasajero");
 
                     b.HasOne("Aerolinea.Models.Entidades.Vuelo", "VueloIdaNavigation")
                         .WithMany("ReservaVueloIdaNavigation")

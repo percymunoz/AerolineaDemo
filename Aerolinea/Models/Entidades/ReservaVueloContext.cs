@@ -25,7 +25,8 @@ namespace Aerolinea.Models.Entidades
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=PC-PERCY;Database=ReservaVuelo;Integrated Security=True");
+                //optionsBuilder.UseSqlServer("Server=PC-PERCY;Database=ReservaVuelo;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Server=tcp:server-sql-prueba.database.windows.net,1433;Initial Catalog=aerolinea;Persist Security Info=False;User ID=pwmc;Password=%abcd1234%;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
